@@ -14,4 +14,4 @@ class LoginPageLocators:
 
 
 class ProductPageLocators:
-    ADD_IN_BASKET = (By.CLASS_NAME, "btn.btn-lg.btn-primary.btn-add-to-basket")
+    ADD_IN_BASKET = (By.CLASS_NAME, "btn-add-to-basket")

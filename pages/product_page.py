@@ -2,6 +2,7 @@ from .base_page import BasePage
 from selenium.common.exceptions import NoAlertPresentException
 import math
 from .locators import ProductPageLocators
+import time
 
 
 class ProductPage(BasePage):
@@ -15,6 +16,7 @@ class ProductPage(BasePage):
 
     def should_be_add_in_basket(self):
         assert self.is_element_present(*ProductPageLocators.ADD_IN_BASKET), "Button ADD_IN_BASKET not found"
+        self.browser.find_element(*ProductPageLocators.ADD_IN_BASKET).click()
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
