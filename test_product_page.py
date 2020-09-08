@@ -10,11 +10,10 @@ def test_guest_can_go_to_login_page(browser):
     product_page = ProductPage(browser, link)
 
     product_page.open()
-    product_page.should_be_url_basket()
+    product_page.add_in_basket()
     product_page.should_be_add_in_basket()
-    product_page.should_be_name_product_in_alert()
     # time.sleep(999)
 
-# //*[@class="basket-mini.pull-right.hidden-xs"]//*[@class="btn.btn-default"]
+
 
 
