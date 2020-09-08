@@ -21,4 +21,3 @@ class ProductPageLocators:
     BUTTON_VIEW_BASKET = (By.XPATH, '//*[@class="basket-mini pull-right hidden-xs"]//*[@class="btn btn-default"]')
     NAME_PRODUCT_IN_BASKET = (By.XPATH, '//div[@class="basket-items"]/div[@class="row"]/div[2]/h3')
     PRICE_PRODUCT_IN_BASKET = (By.XPATH, '//div[@class="basket-items"]/div[@class="row"]/div[4]')
-

@@ -30,5 +30,3 @@ class ProductPage(BasePage):
         assert Name_Product == Name_Product_In_Basket, f"In basket not is NAME this product, \n actual result = {Name_Product_In_Basket}, \n expected result = {Name_Product}"
         Price_Product_In_Basket = self.browser.find_element(*ProductPageLocators.PRICE_PRODUCT_IN_BASKET).text
         assert Price_Product == Price_Product_In_Basket, f"In basket not is PRICE this product, \n actual result = {Price_Product_In_Basket}, \n expected result = {Price_Product}"
-
-

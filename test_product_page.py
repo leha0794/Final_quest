@@ -13,7 +13,3 @@ def test_guest_can_go_to_login_page(browser):
     product_page.add_in_basket()
     product_page.should_be_add_in_basket()
     # time.sleep(999)
-
-
-
-
