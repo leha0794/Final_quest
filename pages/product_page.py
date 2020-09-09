@@ -1,8 +1,6 @@
 from .base_page import BasePage
-
-import math
 from .locators import ProductPageLocators
-import time
+
 
 
 class ProductPage(BasePage):
