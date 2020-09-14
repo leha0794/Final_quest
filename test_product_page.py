@@ -14,11 +14,34 @@ import pytest
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"])
 def test_guest_can_go_to_login_page(browser, link):
-    # link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
-    # link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
-    product_page = ProductPage(browser, link)
-
+    product_page = ProductPage(browser)
     product_page.open()
     product_page.add_in_basket()
     product_page.should_be_add_in_basket()
-    # time.sleep(999)
+
+
+@pytest.mark.xfail
+def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+
+    product_page = ProductPage(browser, link)
+    product_page.open()
+    product_page.add_in_basket()
+    product_page.should_not_be_success_message_alert()
+
+
+def test_guest_cant_see_success_message(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+
+    product_page = ProductPage(browser, link)
+    product_page.open()
+    product_page.should_not_be_success_message_alert()
+
+@pytest.mark.xfail
+def test_message_disappeared_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+
+    product_page = ProductPage(browser, link)
+    product_page.open()
+    product_page.add_in_basket()
+    product_page.should_not_be_success_message_aler_after()
