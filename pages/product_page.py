@@ -33,12 +33,11 @@ class ProductPage(BasePage):
 
     def check_expected_result_for_name_to_alert(self, Name_Product, Name_Product_In_Alert):
         assert Name_Product == Name_Product_In_Alert, f"In alert not is NAME this product, \n actual result = {Name_Product_In_Alert}, \n expected result = {Name_Product}"
-
     # ---------------------------------------------------------------------------------------------
 
+    # ====================================================================================================================
     # Эти методы, нужно потом попытаться обьединить, и сделать новый в который я буду просто прокидывать переменную локатора
     # и дальше он сам найдет что нужно, сейчас я пишу отдельно метод для цены продукта и для имени
-    # ---------------------------------------------------------------------------------------------
     def copy_text_price_product_in_basket(self):
         assert self.is_element_present(*ProductPageLocators.PRICE_PRODUCT_IN_BASKET), "PRICE_PRODUCT_IN_BASKET not found"
         Price_Product_In_Basket = self.browser.find_element(*ProductPageLocators.PRICE_PRODUCT_IN_BASKET).text
@@ -63,7 +62,7 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.NAME_PRODUCT), "NAME_PRODUCT not found"
         Name_Product = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT).text
         return Name_Product
-    # ---------------------------------------------------------------------------------------------
+    # ====================================================================================================================
 
     def click_button_view_basket(self):
         assert self.is_element_present(*ProductPageLocators.BUTTON_VIEW_BASKET), "BUTTON_VIEW_BASKET not found"
@@ -76,3 +75,4 @@ class ProductPage(BasePage):
     def should_not_be_success_message_aler_after(self):
         assert self.is_disappeared(*ProductPageLocators.NAME_PRODUCT_IN_ALERT), \
             "Should be closed 'alert' for product after 4 second"
+
