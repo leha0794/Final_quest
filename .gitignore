@@ -128,3 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 !/pages/1212.py
+
+Будет удалено pages/product_page.py

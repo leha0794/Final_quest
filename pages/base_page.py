@@ -20,6 +20,10 @@ class BasePage():
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
 
+    def click_button_view_basket(self):
+        assert self.is_element_present(*BasePageLocators.BUTTON_VIEW_BASKET), "BUTTON_VIEW_BASKET not found"
+        self.browser.find_element(*BasePageLocators.BUTTON_VIEW_BASKET).click()
+
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
@@ -60,3 +64,18 @@ class BasePage():
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    # Для себя универсальные функции
+    def click_element(self, how, what, error_name):
+        assert self.is_element_present(how, what), f"{error_name} not found"
+        self.browser.find_element(how, what).click()
+
+    def copy_text_element(self, how, what, error_name):
+        assert self.is_element_present(how, what), f"{error_name} not found"
+        text = self.browser.find_element(how, what).text
+        return text
+
+    def expected_result_text(self, how, what, error_name, expected_result):
+        assert self.is_element_present(how, what), f"{error_name} not found"
+        actual_result = self.browser.find_element(how, what).text
+        assert actual_result == expected_result, f"{error_name}, \n actual result = {actual_result}, \n expected result = {expected_result}"

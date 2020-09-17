@@ -64,15 +64,12 @@ class ProductPage(BasePage):
         return Name_Product
     # ====================================================================================================================
 
-    def click_button_view_basket(self):
-        assert self.is_element_present(*ProductPageLocators.BUTTON_VIEW_BASKET), "BUTTON_VIEW_BASKET not found"
-        self.browser.find_element(*ProductPageLocators.BUTTON_VIEW_BASKET).click()
 
     def should_not_be_success_message_alert(self):
         assert self.is_not_element_present(*ProductPageLocators.NAME_PRODUCT_IN_ALERT), \
             "Not should be 'alert' for product"
 
-    def should_not_be_success_message_aler_after(self):
+    def should_not_be_success_message_alert_after(self):
         assert self.is_disappeared(*ProductPageLocators.NAME_PRODUCT_IN_ALERT), \
             "Should be closed 'alert' for product after 4 second"
 
