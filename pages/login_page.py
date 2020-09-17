@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
+import time
 
 
 class LoginPage(BasePage):
@@ -18,4 +19,14 @@ class LoginPage(BasePage):
     def should_be_register_form(self):
         assert self.is_element_present(*LoginPageLocators.REGISTRATION_EMAIL), "'REGISTRATION' Field for email not found"
         assert self.is_element_present(*LoginPageLocators.REGISTRATION_PASSWORD), "'REGISTRATION' Field for password not found"
-        assert self.is_element_present(*LoginPageLocators.REGISTRATION_PASSWORD_REPEAT), "'REGISTRATION' Field for password repeat not found"
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_CONFIRM_PASSWORD), "'REGISTRATION' Field for password repeat not found"
+
+    def register_new_user(self):
+        password = str(time.time())
+        email = str(time.time()) + "@fakemail.org"
+        self.input_element(*LoginPageLocators.REGISTRATION_EMAIL, "REGISTRATION_EMAIL", email)
+        self.input_element(*LoginPageLocators.REGISTRATION_PASSWORD, "REGISTRATION_PASSWORD", password)
+        self.input_element(*LoginPageLocators.REGISTRATION_CONFIRM_PASSWORD, "REGISTRATION_CONFIRM_PASSWORD", password)
+        self.click_element(*LoginPageLocators.BUTTON_REGISTER, "BUTTON_REGISTER")
+        print("Email", email)
+        print("Password", password)
