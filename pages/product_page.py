@@ -24,7 +24,7 @@ class ProductPage(BasePage):
         self.check_expected_result_for_price_to_basket(Price_Product, Price_Product_In_Basket)
 
     # ---------------------------------------------------------------------------------------------
-    #  Это можно как-то поробовать обьединть
+    #  Эти методы можно обьединить в один, тут не стал трогать
     def check_expected_result_for_price_to_basket(self, Price_Product, Price_Product_In_Basket):
         assert Price_Product == Price_Product_In_Basket, f"In basket not is PRICE this product, \n actual result = {Price_Product_In_Basket}, \n expected result = {Price_Product}"
 
@@ -36,8 +36,7 @@ class ProductPage(BasePage):
     # ---------------------------------------------------------------------------------------------
 
     # ====================================================================================================================
-    # Эти методы, нужно потом попытаться обьединить, и сделать новый в который я буду просто прокидывать переменную локатора
-    # и дальше он сам найдет что нужно, сейчас я пишу отдельно метод для цены продукта и для имени
+    # Эти методы можно обьединить в один, тут не стал трогать
     def copy_text_price_product_in_basket(self):
         assert self.is_element_present(*ProductPageLocators.PRICE_PRODUCT_IN_BASKET), "PRICE_PRODUCT_IN_BASKET not found"
         Price_Product_In_Basket = self.browser.find_element(*ProductPageLocators.PRICE_PRODUCT_IN_BASKET).text

@@ -1,8 +1,6 @@
-from selenium.common.exceptions import NoSuchElementException
 import math
 from .locators import BasePageLocators
-from selenium.common.exceptions import NoAlertPresentException
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoAlertPresentException, TimeoutException, NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -80,7 +78,7 @@ class BasePage():
         actual_result = self.browser.find_element(how, what).text
         assert actual_result == expected_result, f"{error_name}, \n actual result = {actual_result}, \n expected result = {expected_result}"
 
-    def click_input_element(self, how, what, error_name, input_text):
+    def click_and_input_element(self, how, what, error_name, input_text):
         assert self.is_element_present(how, what), f"{error_name} not found"
         element = self.browser.find_element(how, what).click()
         element.send_keys(input_text)
@@ -92,3 +90,4 @@ class BasePage():
     def should_be_authorized_user(self):
         assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
                                                                      " probably unauthorised user"
+

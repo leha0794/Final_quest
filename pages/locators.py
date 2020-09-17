@@ -36,3 +36,4 @@ class BasePageLocators:
 class BasketPageLocators:
     BASKET_FORMSET = (By.ID, "basket_formset")
     TEXT_FOR_CLEAR_BASKET = (By.ID, "content_inner")
+
