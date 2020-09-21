@@ -1,7 +1,6 @@
 from .pages.product_page import ProductPage
 from .pages.basket_page import BasketPage
 from .pages.login_page import LoginPage
-import time
 import pytest
 
 
@@ -37,7 +36,6 @@ class TestGuestLoginPageAndLink:
         page = LoginPage(browser, link)
         page.open()
         page.go_to_login_page()
-        time.sleep(7)
         page.should_be_login_page()
 
     @pytest.mark.need_review
@@ -53,7 +51,6 @@ class TestGuestMessageProductToBasket:
     @pytest.mark.xfail
     def test_message_disappeared_after_adding_product_to_basket(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
-
         page = ProductPage(browser, link)
         page.open()
         page.add_in_basket()
@@ -62,11 +59,9 @@ class TestGuestMessageProductToBasket:
     @pytest.mark.xfail
     def test_guest_cant_see_success_message_after_adding_product_to_basket(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
-
         page = ProductPage(browser, link)
         page.open()
         page.add_in_basket()
-        time.sleep(7)
         page.should_not_be_success_message_alert()
 
 
